@@ -391,12 +391,15 @@
             const a= document.getElementById("collaboratorName")
             if (a.value != ""){
                 updateCollaboratorsList(a.value)
+                updateAssigneeSelect() 
                 a.value=""  
             }else{
                 a.style.borderColor=" red"
                 
             }
 
+            // À IMPLÉMENTER
+            
         }
     
 
@@ -408,8 +411,20 @@
          * - Utiliser un style inline: background #667eea, color white, padding 8px 15px, border-radius 20px
          * - Injecter le HTML dans l'élément avec innerHTML
          */
-        function updateCollaboratorsList() {
+        function updateCollaboratorsList(value) {
             // À IMPLÉMENTER
+            const collaboratorsList = document.getElementById("collaboratorsList");
+            let p = document.createElement("p");
+            p.textContent = value
+            p.style.backgroundColor = "#667eea"
+            p.style.color = "white"
+            p.style.padding = 9 + "px" + 15 + "px"
+            p.style.borderRadius = 20 + "px" 
+            collaboratorsList.appendChild(p)
+
+            collaborators.push(p.textContent);
+            
+
         }
 
         /**
@@ -421,6 +436,14 @@
          */
         function updateAssigneeSelect() {
             // À IMPLÉMENTER
+
+            const storyAssignee = document.getElementById("storyAssignee")
+            collaborators.forEach(coll =>{
+                const options = document.createElement("option")
+                options.textContent = coll
+                storyAssignee.push(potions)
+            })
+
         }
 
         /**
