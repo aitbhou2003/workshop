@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
 
@@ -64,7 +65,9 @@
             margin-bottom: 15px;
         }
 
-        input, select, textarea {
+        input,
+        select,
+        textarea {
             padding: 12px;
             border: 2px solid #ddd;
             border-radius: 8px;
@@ -72,12 +75,15 @@
             transition: border-color 0.3s;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus,
+        select:focus,
+        textarea:focus {
             outline: none;
             border-color: #667eea;
         }
 
-        input[type="text"], textarea {
+        input[type="text"],
+        textarea {
             flex: 1;
         }
 
@@ -155,7 +161,7 @@
             margin-bottom: 10px;
             border-radius: 8px;
             border-left: 4px solid #667eea;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .story-item strong {
@@ -224,14 +230,14 @@
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             cursor: move;
             transition: all 0.3s;
         }
 
         .card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .card h4 {
@@ -303,6 +309,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -386,22 +393,22 @@
          * - Appeler updateCollaboratorsList() pour afficher la liste
          * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
          */
-    
+
         function addCollaborator() {
-            const a= document.getElementById("collaboratorName")
-            if (a.value != ""){
+            const a = document.getElementById("collaboratorName")
+            if (a.value != "") {
                 updateCollaboratorsList(a.value)
-                updateAssigneeSelect() 
-                a.value=""  
-            }else{
-                a.style.borderColor=" red"
-                
+                updateAssigneeSelect()
+                a.value = ""
+            } else {
+                a.style.borderColor = " red"
+
             }
 
             // À IMPLÉMENTER
-            
+
         }
-    
+
 
         /**
          * Fonction pour afficher la liste des collaborateurs dans l'interface
@@ -419,11 +426,11 @@
             p.style.backgroundColor = "#667eea"
             p.style.color = "white"
             p.style.padding = 9 + "px" + 15 + "px"
-            p.style.borderRadius = 20 + "px" 
+            p.style.borderRadius = 20 + "px"
             collaboratorsList.appendChild(p)
 
             collaborators.push(p.textContent);
-            
+
 
         }
 
@@ -438,7 +445,7 @@
             // À IMPLÉMENTER
 
             const storyAssignee = document.getElementById("storyAssignee")
-            collaborators.forEach(coll =>{
+            collaborators.forEach(coll => {
                 const options = document.createElement("option")
                 options.textContent = coll
                 storyAssignee.appendChild(options)
@@ -458,7 +465,42 @@
          */
         function addUserStory() {
             // À IMPLÉMENTER
-        }
+            let titre = document.getElementById('storyTitle');
+            let description = document.getElementById('storyDescription');
+            let sprint = document.getElementById('storySprint');
+            let assignee = document.getElementById('storyAssignee');
+
+            if (titre.value === '' || description.value === '') {
+                if (titre.value === '') {
+                    titre.style.borderColor = 'red'
+                }
+                if (description.value === '') {
+                    description.style.borderColor = 'red'
+                }
+            }else{
+
+            }
+            const story = {
+                id: storyIdCounter++,
+                title: titre.value,
+                description: description.value,
+                sprint: sprint.value,
+                assignee: assignee.value
+            };
+
+            userStories.push(story);
+
+            titre.value = '';
+            description.value = '';
+            sprint.value = '';
+            assignee = '';
+            
+            renderSprintBacklog();
+
+
+
+
+}
 
         
         //  * Fonction pour afficher le Sprint Backlog avec toutes les stories par sprint
@@ -616,4 +658,5 @@
         renderBoard();
     </script>
 </body>
+
 </html>
