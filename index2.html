@@ -477,9 +477,9 @@
                 if (description.value === '') {
                     description.style.borderColor = 'red'
                 }
-            }else{
+            } else {
 
-            }
+            
             const story = {
                 id: storyIdCounter++,
                 title: titre.value,
@@ -489,97 +489,146 @@
             };
 
             userStories.push(story);
+            
+
+            renderSprintBacklog()
+
 
             titre.value = '';
             description.value = '';
             sprint.value = '';
             assignee = '';
-            
-            renderSprintBacklog();
+
+        }
+
+        }
 
 
-
-
-}
-
-        
         //  * Fonction pour afficher le Sprint Backlog avec toutes les stories par sprint
         //  * TODO:
         //  * - Récupérer le conteneur avec l'id 'sprintBacklog'
-            
+
         //  * - Pour chaque sprint (1, 2, 3):
         //  *   - Filtrer les stories du sprint avec status 'backlog'
         //  *   - Générer le HTML: conteneur sprint avec header (titre + bouton Start)
         //  *   - Pour chaque story: afficher titre, description, assigné
         //  *   - Si aucune story: afficher "Aucune story dans ce sprint"
         //  * - Injecter tout le HTML généré dans le conteneur
-         
+
         //meed************************
         function renderSprintBacklog() {
+            // const selected = document.getElementById("storySprint")
+           userStories.forEach(story=>{
+                var contennueSprint = document.getElementById("sprintBacklog");
 
-            var sprintBlock = document.getElementById("sprint-backlog");
-            var contennueSprint = document.getElementById("sprintBacklog");     
-            contennueSprint.classList.add("sprint-container");
-            const divContenairHeader = document.createElement("div");
-            divContenairHeader.classList.add("sprint-header");
-           contennueSprint.appendChild(divContenairHeader)
-           const H3 = document.createElement("h3")
-           H3.innerText = "Sprint 1"
-           divContenairHeader.appendChild(H3)
-           const buttonnsprint = document.createElement("button")
-           buttonnsprint.classList.add("start-sprint-btn")
-           buttonnsprint.textContent = "Demarer sprint"
-           divContenairHeader.appendChild(buttonnsprint)
-           const divcontenaireStory = document.createElement("div")
-           divcontenaireStory.classList.add("sprint-stories")
-           contennueSprint.appendChild(divcontenaireStory)
-           //**********************************
+             if (story.sprint == 1) {
+
+                var sprintBlock = document.getElementById("sprint-backlog");
+                contennueSprint.classList.add("sprint-container");
+                const divContenairHeader = document.createElement("div");
+                divContenairHeader.classList.add("sprint-header");
+                contennueSprint.appendChild(divContenairHeader)
+                const H3 = document.createElement("h3")
+                H3.innerText = "Sprint 1"
+                divContenairHeader.appendChild(H3)
+                const buttonnsprint = document.createElement("button")
+                buttonnsprint.classList.add("start-sprint-btn")
+                buttonnsprint.textContent = "Demarer sprint"
+                divContenairHeader.appendChild(buttonnsprint)
+                const divcontenaireStory = document.createElement("div")
+                divcontenaireStory.classList.add("sprint-stories")
+                contennueSprint.appendChild(divcontenaireStory)
+
+
+                const divItem = document.createElement("div")
+                divItem.classList.add("story-item")
+                divcontenaireStory.appendChild(divItem)
+                const strong = document.createElement("strong")
+                const small = document.createElement("small")
+                small.textContent = `${story.assignee}`
+                strong.textContent = `${story.title}`
+                divItem.appendChild(strong)
+                divItem.appendChild(small)
+            }
+
+// ***********************************************************
+
+if (story.sprint == 2) {
+            //**********************************
             contennueSprint.classList.add("sprint-container");
             const divContenairHeader2 = document.createElement("div");
             divContenairHeader2.classList.add("sprint-header");
-           contennueSprint.appendChild(divContenairHeader2)
-           const H3S2 = document.createElement("h3")
-           H3S2.innerText = "Sprint 2"
-           divContenairHeader2.appendChild(H3S2)
-           const buttonnsprint2 = document.createElement("button")
-           buttonnsprint2.classList.add("start-sprint-btn")
-           buttonnsprint2.textContent = "Demarer sprint"
-           divContenairHeader2.appendChild(buttonnsprint2)
-           const divcontenaireStory2 = document.createElement("div")
-           divcontenaireStory2.classList.add("sprint-stories")
-           contennueSprint.appendChild(divcontenaireStory2)
-           //**********************************
+            contennueSprint.appendChild(divContenairHeader2)
+            const H3S2 = document.createElement("h3")
+            H3S2.innerText = "Sprint 2"
+            divContenairHeader2.appendChild(H3S2)
+            const buttonnsprint2 = document.createElement("button")
+            buttonnsprint2.classList.add("start-sprint-btn")
+            buttonnsprint2.textContent = "Demarer sprint"
+            divContenairHeader2.appendChild(buttonnsprint2)
+            const divcontenaireStory2 = document.createElement("div")
+            divcontenaireStory2.classList.add("sprint-stories")
+            contennueSprint.appendChild(divcontenaireStory2)
+
+
+
+
+            const divItem2 = document.createElement("div")
+            divItem2.classList.add("story-item")
+            divcontenaireStory2.appendChild(divItem2)
+            const strong2 = document.createElement("strong")
+            const small2 = document.createElement("small")
+            small2.textContent = `${story.assignee}`
+            strong2.textContent = `${story.title}`
+            divItem2.appendChild(strong2)
+            divItem2.appendChild(small2)
+       }
+
+    //    *****************************************
+
+         if (story.sprint == 3) {
             contennueSprint.classList.add("sprint-container");
             const divContenairHeader3 = document.createElement("div");
             divContenairHeader3.classList.add("sprint-header");
-           contennueSprint.appendChild(divContenairHeader3)
-           const H3S3 = document.createElement("h3")
-           H3S3.innerText = "Sprint 3"
-           divContenairHeader3.appendChild(H3S3)
-           const buttonnsprint3 = document.createElement("button")
-           buttonnsprint3.classList.add("start-sprint-btn")
-           buttonnsprint3.textContent = "Demarer sprint"
-           divContenairHeader3.appendChild(buttonnsprint3)
-           const divcontenaireStory3 = document.createElement("div")
-           divcontenaireStory3.classList.add("sprint-stories")
-           contennueSprint.appendChild(divcontenaireStory3)
-           //****************
-        //    const divItem3 = document.createElement("div")
-        //    divItem3.classList.add("story-item")
-        //    divcontenaireStory3.appendChild(divItem3)
-    
-        //    const strong3 = document.createElement("strong")
-        //    divItem3.appendChild(strong3)
-        //     const small3 = document.createElement("strong")
-        //     small3.textContent = "lkjhgfd"
-
-        //    divItem3.appendChild(small3)
+            contennueSprint.appendChild(divContenairHeader3)
+            const H3S3 = document.createElement("h3")
+            H3S3.innerText = "Sprint 3"
+            divContenairHeader3.appendChild(H3S3)
+            const buttonnsprint3 = document.createElement("button")
+            buttonnsprint3.classList.add("start-sprint-btn")
+            buttonnsprint3.textContent = "Demarer sprint"
+            divContenairHeader3.appendChild(buttonnsprint3)
+            const divcontenaireStory3 = document.createElement("div")
+            divcontenaireStory3.classList.add("sprint-stories")
+            contennueSprint.appendChild(divcontenaireStory3)
+            //****************
 
 
-           
 
 
+
+            const divItem3 = document.createElement("div")
+            divItem3.classList.add("story-item")
+            divcontenaireStory3.appendChild(divItem3)
+            const strong3 = document.createElement("strong")
+            const small3 = document.createElement("small")
+            small3.textContent = `${story.assignee}`
+            strong3.textContent = `${story.title}`
+            divItem3.appendChild(strong3)
+            divItem3.appendChild(small3)
+        
         }
+
+           })
+        }
+
+
+
+
+
+       
+
+
 
         /**
          * Fonction appelée lors du clic sur "Démarrer Sprint"
