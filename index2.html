@@ -386,8 +386,18 @@
          * - Appeler updateCollaboratorsList() pour afficher la liste
          * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
          */
+    
         function addCollaborator() {
-            // À IMPLÉMENTER
+            const a= document.getElementById("collaboratorName")
+            if (a.value != ""){
+                updateCollaboratorsList(a.value)
+                a.value=""  
+            }else{
+                a.style.borderColor=" red"
+                
+            }
+
+        }
         }
 
         /**
